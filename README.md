@@ -1,71 +1,70 @@
-# postgres_13_installation_ubuntu
+# PostgreSQL 13 installation_ubuntu
 
 [LINUX] GUIDE FOR UBUNTU USERS (tested on 20.04)
-25
-D3 · Lecture 7 · 7 months ago
+
 I've had some difficulties but finally managed to install PostgreSQL and restore the database.
 
 Here's how I've done:
 
 ______________________________
 
-POSTGRESQL 12 INSTALLATION
+## POSTGRESQL 12 INSTALLATION
 
 1. Open the terminal and run these four commands to install PostgreSQL 12
 
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+`sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 sudo apt-get update
 
-sudo apt-get install postgresql-12
+sudo apt-get install postgresql-12`
 
 2. Enable PostgreSQL service:
 
-sudo systemctl enable postgresql.service
+`sudo systemctl enable postgresql.service`
 
 3. Update the UNIX password (and REMEMBER IT):
 
-sudo passwd postgres
+`sudo passwd postgres`
 
 You'll be asked to enter the password twice. Do it.
 
 4. Access PostgreSQL shell and set the password for the DB administrator:
 
-sudo su -l postgres
+`sudo su -l postgres`
 
 Enter your sudo password. Then to enter the psql shell type:
 
-psql
+`psql`
 
 Once here you have to set the password for the DB administrator (and REMEMBER IT):
 
-postgres=# \password postgres
+`postgres=# \password postgres`
 
 Once you've set the password, quit and exit by running these two commands:
 
-\q
+`\q
 
-exit
+exit`
 
 
 
 ______________________________
 
-PGADMIN4 INSTALLATION
+## PGADMIN4 INSTALLATION
 
 1. If curl is not installed in your system, install it:
 
-sudo apt-get install curl
+`sudo apt-get install curl`
 
 2. Run these three commands to install pgAdmin4:
 
-curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+`curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
 
 sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
 
-sudo apt install pgadmin4
+sudo apt install pgadmin4`
 
 3. Reboot your system.
 
@@ -73,7 +72,7 @@ sudo apt install pgadmin4
 
 ______________________________
 
-CREATE A SERVER CONNECTION
+## CREATE A SERVER CONNECTION
 
 1. Open pgAdmin 4 from your application menu.
 
@@ -91,7 +90,7 @@ CREATE A SERVER CONNECTION
 
 ______________________________
 
-RESTORE THE DATABASE
+## RESTORE THE DATABASE
 
 1. Open your server, right click Databases and then Create -> Database...
 
